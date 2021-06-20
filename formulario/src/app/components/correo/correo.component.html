@@ -1,0 +1,19 @@
+<div>
+    <label for="correoID">Correo Electrónico</label>
+    <br>
+    <input id="correoID"
+        type="email"
+        name="correoID"
+        ngModel
+        required
+        #correoCampo="ngModel"
+   
+        >
+        <div *ngIf="correoCampo.touched && correoCampo.errors">
+            <p *ngIf="correoCampo.errors.required">
+              Error: Campo requerido
+            </p>
+            
+          </div>
+    
+</div>

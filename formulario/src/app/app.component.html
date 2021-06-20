@@ -1,0 +1,32 @@
+<div class="div1 col-xs-12 col-sm-4 col-md-3 col-lg-6">
+  <h1>FORMULARIO WEB</h1>
+  <!-- <head>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>-->
+  <div>
+    <form action="/send-email" method="POST" #f="ngForm" (ngSubmit)="onSubmit(f)" ng-submit="Display()" novalidate>
+          <app-registro></app-registro> 
+          <app-cedula></app-cedula>
+          <app-correo></app-correo>
+          <app-tipo-persona></app-tipo-persona>
+          <app-curso></app-curso>
+
+<re-captcha (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU"  required ></re-captcha>
+  
+
+          
+         
+          
+          <!--<button type="submit" onclick="alert('FORMULARIO ENVIADO');">Enviar</button>-->  
+           <br> 
+                <button type="submit" >Enviar</button>
+                      <button type="reset"  class="button:focus">Cancelar</button>
+  
+                    </form>
+  
+  </div>
+          
+        
+
+
+
