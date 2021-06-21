@@ -1,59 +1,52 @@
-
-<div>
+<div class="col-sm-12">
+  <div class="col-sm-4">
     <label for="nombreID">Nombres</label>
-    <br>
-    <input id="nombreID"
-        type="text"
-        name="nombre"
-        minlength="3"
-        maxlength="15"
-        pattern="[a-zA-Z ]{2,254}"
-        title="Ingrese solo letras"
-        ngModel
-        required
-        #nombreCampo="ngModel"
-   
-    >
+  </div>
+  <div class="col-sm-8">
+    <input id="nombreID" type="text" name="nombre" minlength="3" maxlength="15" pattern="[a-zA-Z ]{2,254}"
+      title="Ingrese solo letras" ngModel required #nombreCampo="ngModel">
+  </div>
+</div>
+<div class="col-sm-12">
+  <small>
     <div *ngIf="nombreCampo.touched && nombreCampo.errors">
-        <p *ngIf="nombreCampo.errors.required">
-          Error: Campo requerido
-        </p>
-        <p *ngIf="nombreCampo.errors.minlength">
-          Error: Longitud minima 3
-        </p>
-        <p *ngIf="nombreCampo.errors.pattern">
-            Error: Solamente puede ingresar caracteres
-          </p>
-    
-      </div>
-    <br>
- 
-      <label for="apellidoID">Apellidos</label>
-      <br>
-      <input id="apellidoID"
-          type="text"
-          name="apellido"
-          minlength="3"
-          maxlength="15"
-          pattern="[a-zA-Z ]{2,254}"
-          title="Ingrese solo letras"
-          ngModel
-        required    
-        #apellidoCampo="ngModel"
-    
-      >
-      <div *ngIf="apellidoCampo.touched && apellidoCampo.errors">
-        <p *ngIf="apellidoCampo.errors.required">
-          Error: Campo requerido
-        </p>
-        <p *ngIf="apellidoCampo.errors.minlength">
-          Error: Longitud minima 3
-        </p>
-        <p *ngIf="apellidoCampo.errors.pattern">
-            Error: Solamente puede ingresar caracteres
-          </p>
-    
-      </div>
-    <br>
-      
+      <p *ngIf="nombreCampo.errors.required">
+        Error: Campo requerido
+      </p>
+      <p *ngIf="nombreCampo.errors.minlength">
+        Error: Longitud minima 3
+      </p>
+      <p *ngIf="nombreCampo.errors.pattern">
+        Error: Solamente puede ingresar caracteres
+      </p>
+
+    </div>
+  </small>
+</div>
+
+
+<div class="col-sm-12">
+  <div class="col-sm-4">
+    <label for="apellidoID">Apellidos</label>
+  </div>
+  <div class="col-sm-8">
+    <input id="apellidoID" type="text" name="apellido" minlength="3" maxlength="15" pattern="[a-zA-Z ]{2,254}"
+    title="Ingrese solo letras" ngModel required #apellidoCampo="ngModel">
+  </div>
+</div>
+<div class="col-sm-12">
+  <small>
+    <div *ngIf="apellidoCampo.touched && apellidoCampo.errors">
+      <p *ngIf="apellidoCampo.errors.required">
+        Error: Campo requerido
+      </p>
+      <p *ngIf="apellidoCampo.errors.minlength">
+        Error: Longitud minima 3
+      </p>
+      <p *ngIf="apellidoCampo.errors.pattern">
+        Error: Solamente puede ingresar caracteres
+      </p>
+
+    </div>
+  </small>
 </div>

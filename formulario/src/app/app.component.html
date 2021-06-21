@@ -1,32 +1,50 @@
-<div class="div1 col-xs-12 col-sm-4 col-md-3 col-lg-6">
-  <h1>FORMULARIO WEB</h1>
-  <!-- <head>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  </head>-->
-  <div>
-    <form action="/send-email" method="POST" #f="ngForm" (ngSubmit)="onSubmit(f)" ng-submit="Display()" novalidate>
-          <app-registro></app-registro> 
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORMULARIO WEB</title>
+</head>
+
+<body>
+  <div class="container my-4 border">
+    <h1 class="text-center">FORMULARIO WEB</h1>
+    <div class="col-sm-12">
+      <form action="/send-email" method="POST" #f="ngForm" (ngSubmit)="onSubmit(f)" ng-submit="Display()" novalidate>
+        <div class="col-sm-12">
+          <app-registro></app-registro>
+        </div>
+        <div class="col-sm-12">
           <app-cedula></app-cedula>
+        </div>
+        <div class="col-sm-12">
           <app-correo></app-correo>
+        </div>
+        <div class="col-sm-12">
           <app-tipo-persona></app-tipo-persona>
+        </div>
+        <div class="col-sm-12">
           <app-curso></app-curso>
+        </div>
+        <div class="col-sm-12">
+          <re-captcha (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" required>
+          </re-captcha>
+        </div>
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+          <div class="col-sm-6">
+            <button type="reset" class="btn btn-secondary">Cancelar</button>
+          </div>
 
-<re-captcha (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU"  required ></re-captcha>
-  
-
-          
-         
-          
-          <!--<button type="submit" onclick="alert('FORMULARIO ENVIADO');">Enviar</button>-->  
-           <br> 
-                <button type="submit" >Enviar</button>
-                      <button type="reset"  class="button:focus">Cancelar</button>
-  
-                    </form>
-  
+        </div>
+        <!--<button type="submit" onclick="alert('FORMULARIO ENVIADO');">Enviar</button>-->
+      </form>
+    </div>
   </div>
-          
-        
+</body>
 
-
-
+</html>
