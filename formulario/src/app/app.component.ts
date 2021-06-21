@@ -1,5 +1,6 @@
 import { Component, Directive, Input } from '@angular/core';
 import { FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { CorreoService } from './correo.service';
 
 
 
@@ -10,10 +11,14 @@ import { FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validato
     
   })
   export class AppComponent {
+    constructor(private readonly correoService: CorreoService){
+
+    }
     title = 'formulario';
   onSubmit(f:NgForm) {
-   
+      this.correoService.sendMessage("aaa");
       alert('Correo enviado');
+
   }
  
 

@@ -13,6 +13,8 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
+import { CorreoService } from './correo.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -34,11 +36,11 @@ import { AppComponent } from './app.component';
     RecaptchaFormsModule,
     FormsModule,
     CommonModule,
- 
-    
-   
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    CorreoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
