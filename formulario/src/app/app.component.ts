@@ -11,11 +11,13 @@ import { CorreoInterface, CorreoService } from './correo.service';
 
 })
 export class AppComponent {
+  curso:DatosUser = {};
   constructor(private readonly correoService: CorreoService) {
 
   }
   title = 'formulario';
-  onSubmit(f: NgForm) {
+  onSubmit(formulario: NgForm) {
+    console.log(formulario.form.value);
     const datosEnvio:CorreoInterface = {
       correo: "lmdiaz36@gmail.com",
       curso: "JavaScript",
@@ -46,5 +48,10 @@ export class AppComponent {
     console.log(`Captcha resuelto con respuesta: ${captchaResponse}`); //Escribe aquí su lógica una vez que se ha verificado qué acción a realizar es un humano
   }
 }
-
+export interface DatosUser {
+  nombre?: string;
+  apellido?: string;
+  cedula?: string;
+  correo?: string;
+}
 

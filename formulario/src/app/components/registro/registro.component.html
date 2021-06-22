@@ -1,10 +1,11 @@
 
 <div>
-    <label for="nombreID">Nombres</label>
+    <label for="nombre">Nombres</label>
     <br>
-    <input id="nombreID"
+    <input id="nombre"
+    [(ngModel)]="curso.nombre"
         type="text"
-        name="nombre"
+        name="nombreCampo"
         minlength="3"
         maxlength="15"
         pattern="[a-zA-Z ]{2,254}"
@@ -28,11 +29,12 @@
       </div>
     <br>
  
-      <label for="apellidoID">Apellidos</label>
+      <label for="apellido">Apellidos</label>
       <br>
-      <input id="apellidoID"
+      <input id="apellido"
+      [(ngModel)]="curso.apellido"
           type="text"
-          name="apellido"
+          name="apellidoCampo"
           minlength="3"
           maxlength="15"
           pattern="[a-zA-Z ]{2,254}"

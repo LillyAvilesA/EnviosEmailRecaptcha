@@ -1,10 +1,10 @@
 <div>
-    <label for="cedulaID">Cedula</label>
+    <label for="cedula">Cedula</label>
     <br>
-    <input id="cedulaID"
+    <input id="cedula"
+    [(ngModel)]="curso.cedula"
         type="text"
-        name="cedula"
-        
+        name="cedulaCampo"
         pattern="[0-9]{10}"
         maxlength="10"
         minlength="10"

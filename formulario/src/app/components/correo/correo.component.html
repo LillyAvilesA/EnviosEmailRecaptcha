@@ -1,9 +1,10 @@
 <div>
-    <label for="correoID">Correo Electrónico</label>
+    <label for="correo">Correo Electrónico</label>
     <br>
-    <input id="correoID"
+    <input id="correo"
+    [(ngModel)]="curso.correo"
         type="email"
-        name="correoID"
+        name="correoCampo"
         ngModel
         required
         #correoCampo="ngModel"

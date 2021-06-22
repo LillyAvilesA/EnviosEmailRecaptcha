@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-correo',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./correo.component.css']
 })
 export class CorreoComponent implements OnInit {
-
+  @Input() curso: any;
   constructor() { }
 
   ngOnInit(): void {
