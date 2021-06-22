@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="form-row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4" style="font-size: 30px">Inscribite a un curso!</h1>
+                        </div>
+                        <form class="user" [formGroup]="formularioForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <input type="text" formControlName="nombre" class="form-control form-control-user" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" placeholder="Nombre">
+                                <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nombre.errors.required">Ingrese un nombre</div>
+                                    <div *ngIf="f.nombre.errors.minlength">Error: Longitud minima 3</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" formControlName="apellido" class="form-control form-control-user" [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" placeholder="Apellido">
+                                <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+                                    <div *ngIf="f.apellido.errors.required">Ingrese un apellido</div>
+                                    <div *ngIf="f.apellido.errors.minlength">Error: Longitud minima 3</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" formControlName="cedula" class="form-control form-control-user" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }" placeholder="Cédula">
+                                <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
+                                    <div *ngIf="f.cedula.errors.required">Ingrese una cédula</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" formControlName="correoElectronico" class="form-control form-control-user" [ngClass]="{ 'is-invalid': submitted && f.correoElectronico.errors }" placeholder="Correo Electronico">
+                                <div *ngIf="submitted && f.correoElectronico.errors" class="invalid-feedback">
+                                    <div *ngIf="f.correoElectronico.errors.required">Ingrese un correo electronico</div>
+                                    <div *ngIf="f.correoElectronico.errors.email">No es un correo electronico valido</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoPersonaID">Tipo de persona:</label>
+                                <br>
+                                <input type="radio" name="tipo_persona" formControlName="tipo_persona" value="Estudiante">Estudiante(-75%)
+                                <br>
+                                <input type="radio" name="tipo_persona" formControlName="tipo_persona" value="Profesor">Profesor(-50%)
+                                <br>
+                                <input type="radio" name="tipo_persona" formControlName="tipo_persona" value="Profesional">Profesional externo
+                                <div *ngIf="submitted && f.tipo_persona.errors" class="invalid-feedback">
+                                    <div *ngIf="f.tipo_persona.errors.required">Seleccione un tipo de persona</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cursoID">Curso que quiere seguir:</label>
+                                <br>
+                                <input type="radio" name="curso" formControlName="curso" value="Html($250)">Html($250)
+                                <br>
+                                <input type="radio" name="curso" formControlName="curso" value="CSS($200)">CSS($200)
+                                <br>
+                                <input type="radio" name="curso" formControlName="curso" value="JavaScript($300)">JavaScript($300)
+                                <br>
+                                <div *ngIf="submitted && f.curso.errors" class="invalid-feedback">
+                                    <div *ngIf="f.curso.errors.required">Seleccione un curso</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <re-captcha (resolved)="resolved($event)" formControlName="captcha" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU"></re-captcha>
+                                <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                                    <div *ngIf="f.captcha.errors.required">Compruebe que no es una maquina</div>
+                                </div>
+                            </div>
+                            <button [disabled]="loading" class="btn btn-primary btn-user btn-block " type="submit">Registrar inscripción</button>                            
+                            <hr>
+                            <button class="btn btn-secundary btn-user btn-block " type="reset" class="button:focus">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

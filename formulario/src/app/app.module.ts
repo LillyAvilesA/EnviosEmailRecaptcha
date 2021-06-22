@@ -1,28 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { RegistroComponent } from './components/registro/registro.component';
-import { CedulaComponent } from './components/cedula/cedula.component';
-import { CursoComponent } from './components/curso/curso.component';
-import { CorreoComponent } from './components/correo/correo.component';
-import { TipoPersonaComponent } from './components/tipo-persona/tipo-persona.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
+import { FormularioComponent } from './page/formulario/formulario.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistroComponent,
-    CedulaComponent,
-    CursoComponent,
-    CorreoComponent,
-    TipoPersonaComponent
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +26,7 @@ import { AppComponent } from './app.component';
     RouterModule,
     RecaptchaFormsModule,
     FormsModule,
+    HttpClientModule,
     CommonModule,
  
     
