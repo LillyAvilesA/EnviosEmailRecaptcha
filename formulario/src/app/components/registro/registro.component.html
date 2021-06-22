@@ -1,5 +1,6 @@
-
-<div>
+<form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)" novalidate>
+     
+  <div>
     <label for="nombre">Nombres</label>
     <br>
     <input id="nombre"
@@ -59,3 +60,94 @@
     <br>
       
 </div>
+
+  <!--  -->
+  <!-- <app-cedula
+  [curso]="curso"></app-cedula> -->
+  <div>
+    <label for="cedula">Cedula</label>
+    <br>
+    <input id="cedula"
+    [(ngModel)]="curso.cedula"
+        type="text"
+        name="cedulaCampo"
+        pattern="[0-9]{10}"
+        maxlength="10"
+        minlength="10"
+        ngModel
+        required
+        #cedulaCampo="ngModel"
+   
+        >
+        <div *ngIf="cedulaCampo.touched && cedulaCampo.errors">
+            <p *ngIf="cedulaCampo.errors.required">
+              Error: Campo requerido
+            </p>
+            <p *ngIf="cedulaCampo.errors.minlength">
+              Error: Longitud de 10
+            </p>
+            <p *ngIf="cedulaCampo.errors.pattern">
+                Error: Solamente puede ingresar números
+              </p>
+        
+          </div>
+    
+</div>
+
+  <!-- <app-correo
+  [curso]="curso"></app-correo> -->
+  <div>
+    <label for="correo">Correo Electrónico</label>
+    <br>
+    <input id="correo"
+    [(ngModel)]="curso.correo"
+        type="email"
+        name="correoCampo"
+        ngModel
+        required
+        #correoCampo="ngModel"
+   
+        >
+        <div *ngIf="correoCampo.touched && correoCampo.errors">
+            <p *ngIf="correoCampo.errors.required">
+              Error: Campo requerido
+            </p>
+            
+          </div>
+    
+</div>
+
+  <!-- <app-tipo-persona></app-tipo-persona> -->
+  <div>
+    <label>Tipo de persona</label>
+    <div class="radio" *ngFor="let tipo of tipoPersona">
+      <label for="tipoPersona">
+        <input 
+        [(ngModel)]="curso.tipoPersona"
+        type="radio" name="tipoPersona"
+          ngModel [value]="tipo" required>
+        {{tipo.nombre}}
+      </label>
+    </div>
+  </div>
+  <!-- <app-curso></app-curso> -->
+  <div>
+    <label>Curso que quiere seguir</label>
+    <div class="radio" *ngFor="let curson of cursos">
+      <label for="cursot">
+        <input 
+        [(ngModel)]="curso.cursot"
+        type="radio" name="cursot"
+          ngModel [value]="curson" required>
+        {{curson.nombre}}
+      </label>
+    </div>
+  </div>
+  <re-captcha 
+  (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" required>
+  </re-captcha>
+  <br>
+  <button [disabled]="!formulario.form.valid" type="submit">Enviar</button>
+  <button type="reset" class="button:focus">Cancelar</button>
+
+</form>

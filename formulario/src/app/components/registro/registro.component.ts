@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { CorreoInterface, CorreoService } from 'src/app/correo.service';
 
 
 @Component({
@@ -6,17 +8,57 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
-@Input() curso: any;
+export class RegistroComponent {
+  curso: DatosUser = {};
+  cursos = [
+    {
+      nombre: "Html",
+      precio: 250
+    },
+    {
+      nombre: "JavaScript",
+      precio: 300
+    },
+    {
+      nombre: "CSS",
+      precio: 200
+    },
+  ];
+  tipoPersona = [
+    {
+      nombre: "Estudiante",
+      desc: 75
+    },
+    {
+      nombre: "Profesor",
+      desc: 50
+    },
+    {
+      nombre: "Profesional",
+      desc: 0
+    },
+  ];
+  constructor(private readonly correoService: CorreoService) {
 
-  constructor() {
   }
-
-  ngOnInit() {
-    
+  title = 'formulario';
+  onSubmit(formulario: NgForm) {
+    const datosIngresados = formulario.form.value;
+    const datosEnvio: CorreoInterface = {
+      correo: datosIngresados.correoCampo,
+      curso: datosIngresados.cursot.nombre,
+      precio: datosIngresados.cursot.precio - datosIngresados.cursot.precio*(datosIngresados.tipoPersona.desc/100)
+    };
+    this.correoService.sendMessage(datosEnvio);
   }
-
-
- 
+  public resolved(captchaResponse: string) {}
+}
+export interface DatosUser {
+  nombre?: string;
+  apellido?: string;
+  cedula?: string;
+  correo?: string;
+  tipoPersona?: any;
+  cursot?: any;
 }
 

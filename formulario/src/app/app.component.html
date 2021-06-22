@@ -1,89 +1,18 @@
-<div class="div1 col-xs-12 col-sm-4 col-md-3 col-lg-6">
-  <h1>FORMULARIO WEB</h1>
-  <!-- <head>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  </head>-->
-  <div>
-    <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)" novalidate>
-      <!-- <app-registro
-      [curso]="curso"></app-registro> -->
+<!DOCTYPE html>
+<html lang="en">
 
-      <div>
-        <label for="nombre">Nombres</label>
-        <br>
-        <input id="nombre"
-        [(ngModel)]="curso.nombre"
-            type="text"
-            name="nombreCampo"
-            minlength="3"
-            maxlength="15"
-            pattern="[a-zA-Z ]{2,254}"
-            title="Ingrese solo letras"
-            ngModel
-            required
-            #nombreCampo="ngModel"
-       
-        >
-        <div *ngIf="nombreCampo.touched && nombreCampo.errors">
-            <p *ngIf="nombreCampo.errors.required">
-              Error: Campo requerido
-            </p>
-            <p *ngIf="nombreCampo.errors.minlength">
-              Error: Longitud minima 3
-            </p>
-            <p *ngIf="nombreCampo.errors.pattern">
-                Error: Solamente puede ingresar caracteres
-              </p>
-        
-          </div>
-        <br>
-     
-          <label for="apellido">Apellidos</label>
-          <br>
-          <input id="apellido"
-          [(ngModel)]="curso.apellido"
-              type="text"
-              name="apellidoCampo"
-              minlength="3"
-              maxlength="15"
-              pattern="[a-zA-Z ]{2,254}"
-              title="Ingrese solo letras"
-              ngModel
-            required    
-            #apellidoCampo="ngModel"
-        
-          >
-          <div *ngIf="apellidoCampo.touched && apellidoCampo.errors">
-            <p *ngIf="apellidoCampo.errors.required">
-              Error: Campo requerido
-            </p>
-            <p *ngIf="apellidoCampo.errors.minlength">
-              Error: Longitud minima 3
-            </p>
-            <p *ngIf="apellidoCampo.errors.pattern">
-                Error: Solamente puede ingresar caracteres
-              </p>
-        
-          </div>
-        <br>
-          
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORMULARIO WEB</title>
+</head>
+
+<body>
+  <div class="div1 col-xs-12 col-sm-4 col-md-3 col-lg-6">
+    <h1>FORMULARIO WEB</h1>
+    <app-registro></app-registro>
     </div>
-    
-      <!--  -->
-      <app-cedula
-      [curso]="curso"></app-cedula>
-      <app-correo
-      [curso]="curso"></app-correo>
-      <app-tipo-persona></app-tipo-persona>
-      <app-curso></app-curso>
+</body>
 
-      <re-captcha 
-      (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" required>
-      </re-captcha>
-      <br>
-      <button [disabled]="!formulario.form.valid" type="submit">Enviar</button>
-      <button type="reset" class="button:focus">Cancelar</button>
-
-    </form>
-
-  </div>
+</html>
