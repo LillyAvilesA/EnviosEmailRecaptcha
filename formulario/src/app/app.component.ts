@@ -15,10 +15,21 @@ import { CorreoService } from './correo.service';
 
     }
     title = 'formulario';
-  onSubmit(f:NgForm) {
-      this.correoService.sendMessage("aaa");
-      alert('Correo enviado');
-
+  async onSubmit(f:NgForm) {
+    const datosEnvio = {
+      correo: "lmdiaz36@gmail.com",
+      curso: "JavaScript",
+      precio: 200
+  };
+      this.correoService.sendMessage(JSON.stringify(datosEnvio))
+            .subscribe(
+              respuesta => {
+                alert('Correo enviado');
+                console.log('Enviado');
+              },
+              error => {
+                console.error('Error Solicitud', error);
+              });
   }
  
 
