@@ -144,10 +144,10 @@
     </div>
   </div>
   <re-captcha 
-  (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" required>
+    (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" required>
   </re-captcha>
   <br>
-  <button [disabled]="!formulario.form.valid" type="submit">Enviar</button>
+  <button [disabled]="!formulario.form.valid || captchav" type="submit">Enviar</button>
   <button type="reset" class="button:focus">Cancelar</button>
 
 </form>

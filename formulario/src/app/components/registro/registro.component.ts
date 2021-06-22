@@ -10,6 +10,7 @@ import { CorreoInterface, CorreoService } from 'src/app/correo.service';
 })
 export class RegistroComponent {
   curso: DatosUser = {};
+  captchav = true;
   cursos = [
     {
       nombre: "Html($250)",
@@ -51,9 +52,11 @@ export class RegistroComponent {
       precio: datosIngresados.cursot.precio - datosIngresados.cursot.precio*(datosIngresados.tipoPersona.desc/100)
     };
     this.correoService.sendMessage(datosEnvio);
-    
+
   }
-  public resolved(captchaResponse: string) {}
+  public resolved(captchaResponse: string) {
+    this.captchav = false;  
+  }
 }
 export interface DatosUser {
   nombre?: string;
