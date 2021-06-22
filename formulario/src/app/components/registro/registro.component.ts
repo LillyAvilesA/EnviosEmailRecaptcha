@@ -12,31 +12,32 @@ export class RegistroComponent {
   curso: DatosUser = {};
   cursos = [
     {
-      nombre: "Html",
+      nombre: "Html($250)",
       precio: 250
     },
     {
-      nombre: "JavaScript",
+      nombre: "JavaScript($300)",
       precio: 300
     },
     {
-      nombre: "CSS",
+      nombre: "CSS($200)",
       precio: 200
     },
   ];
   tipoPersona = [
     {
-      nombre: "Estudiante",
+      nombre: "Estudiante(75%)",
       desc: 75
     },
     {
-      nombre: "Profesor",
+      nombre: "Profesor(50%)",
       desc: 50
     },
     {
       nombre: "Profesional",
       desc: 0
     },
+
   ];
   constructor(private readonly correoService: CorreoService) {
 
@@ -50,6 +51,7 @@ export class RegistroComponent {
       precio: datosIngresados.cursot.precio - datosIngresados.cursot.precio*(datosIngresados.tipoPersona.desc/100)
     };
     this.correoService.sendMessage(datosEnvio);
+    
   }
   public resolved(captchaResponse: string) {}
 }

@@ -6,10 +6,10 @@ export class CorreoService {
 
   constructor(private _http: HttpClient) { }
 
-  sendMessage(body: any) {
-
+  sendMessage(body: CorreoInterface) {
     this._http.post('http://localhost:3000/sendmail', body).subscribe(
       (val) => {
+        alert("Exito");
         console.log("Exito", val);
       },
       response => {
