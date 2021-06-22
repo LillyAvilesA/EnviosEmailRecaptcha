@@ -10,6 +10,7 @@ const app = express();
 //configure the Express middleware to accept CORS requests and parse request body into JSON
 app.use(cors({origin: "*" }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //start application server on port 3000
 app.listen(3000, () => {
@@ -20,6 +21,7 @@ app.listen(3000, () => {
 app.post("/sendmail", (req, res) => {
   console.log("request came");
   let user = req.body;
+  console.log(user);
   const mailOptions = {
     from: `"Registro de Cursos", "registro.cursosweb@mail.com"`,
     to: user.correo,
@@ -38,10 +40,12 @@ app.post("/sendmail", (req, res) => {
   transport.sendMail(mailOptions, (error, info) => {
     if (error) {
       res.status(400);
+      res.end();
       return console.log(error);
     }
     console.log('Mensaje Enviado: %s', info.messageId);
     res.status(200);
+    res.end();
     return "Enviado";
   });
 });
