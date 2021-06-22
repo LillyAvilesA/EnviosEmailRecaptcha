@@ -26,7 +26,7 @@ const mailOptions = {
 // define a sendmail endpoint, which will send emails and response with the corresponding status
 app.post("/sendmail", (req, res) => {
   console.log("request came");
-  let user = mailOptions; // req.body;
+  let user = req.body;
   sendMail(user, (err, info) => {
     if (err) {
       console.log(err);
@@ -35,12 +35,13 @@ app.post("/sendmail", (req, res) => {
     } else {
       console.log("Email has been sent");
       res.send(info);
+      res.status(200);
     }
   });
 });
 
 const sendMail = (user, callback) => {
-    const transporter = nodemailer.createTransport({
+    const transport = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
       secure: false,
@@ -48,5 +49,11 @@ const sendMail = (user, callback) => {
         user: "mailpruebas46@gmail.com",
         pass: "zdmmitiymhbonzvl"
       }
+    });
+    transport.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log('Mensaje Enviado: %s', info.messageId);
     });
   }
