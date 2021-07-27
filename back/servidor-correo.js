@@ -3,24 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
-var admin= require('firebase-admin');
+
 const app = express(); // se crea una nueva instancia de aplicación Express para inicializar el servicio
 
-var serviceAccount = require("./proyectoregistros-589d7-firebase-adminsdk-rrf39-ddde108618.json");
-//inicializar una app de admin
-/*admin.inicializeApp({
-  credential: admin.credential.applicationDefault(), //aplicar autenticación por defacto
-  databaseURL:'https://proyectoregistros-589d7-default-rtdb.firebaseio.com/' //cadena de conexión
-})
-*/
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://proyectoregistros-589d7-default-rtdb.firebaseio.com/"
-});
+const { response } = require("express");
 
-var database = admin.database();
-var ref = database.ref("/News-list/"); ///AYUDAAAAAAAA
-ref.remove(); // Clear all news
+
 
 
 
@@ -33,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(3000, () => { //Vamos hacer que la variable escuche en el puerto 3000
   console.log("Server iniciado en puerto 3000"); //Mensaje por consola para que avise cuando escuche el servidor
 });
+
 
 // Se define un punto final de sendmail, que enviará correos electrónicos y responderá con el estado correspondiente
 app.post("/sendmail", (req, res) => {
