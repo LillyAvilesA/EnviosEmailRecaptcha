@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CorreoInterface, CorreoService } from 'src/app/correo.service';
 
@@ -37,7 +37,7 @@ export class RegistroComponent {
     {
       nombre: "Profesional",
       desc: 0
-    },
+    }
 
   ];
   constructor(private readonly correoService: CorreoService) {
@@ -47,6 +47,7 @@ export class RegistroComponent {
   onSubmit(formulario: NgForm) {
     const datosIngresados = formulario.form.value;
     const datosEnvio: CorreoInterface = {
+      
       correo: datosIngresados.correoCampo,
       curso: datosIngresados.cursot.nombre,
       precio: datosIngresados.cursot.precio - datosIngresados.cursot.precio*(datosIngresados.tipoPersona.desc/100)

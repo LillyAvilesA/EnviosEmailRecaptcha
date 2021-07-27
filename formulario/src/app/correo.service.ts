@@ -9,7 +9,7 @@ export class CorreoService {
   sendMessage(body: CorreoInterface) {
     this._http.post('http://localhost:3000/sendmail', body).subscribe(
       (val) => {
-        alert("Exito");
+        alert("Mensaje enviado exitósamente");
         console.log("Exito", val);
       },
       response => {

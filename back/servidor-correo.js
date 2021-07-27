@@ -1,23 +1,40 @@
-//import modules installed at the previous step. We need them to run Node.js server and send emails
+// Se importan los módulos instalados en el paso anterior. Los necesitamos para ejecutar el servidor Node.js y enviar correos electrónicos
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
+var admin= require('firebase-admin');
+const app = express(); // se crea una nueva instancia de aplicación Express para inicializar el servicio
 
-// create a new Express application instance
-const app = express();
+var serviceAccount = require("./proyectoregistros-589d7-firebase-adminsdk-rrf39-ddde108618.json");
+//inicializar una app de admin
+/*admin.inicializeApp({
+  credential: admin.credential.applicationDefault(), //aplicar autenticación por defacto
+  databaseURL:'https://proyectoregistros-589d7-default-rtdb.firebaseio.com/' //cadena de conexión
+})
+*/
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://proyectoregistros-589d7-default-rtdb.firebaseio.com/"
+});
 
-//configure the Express middleware to accept CORS requests and parse request body into JSON
+var database = admin.database();
+var ref = database.ref("/News-list/"); ///AYUDAAAAAAAA
+ref.remove(); // Clear all news
+
+
+
+//Se configura el middleware Express para aceptar solicitudes CORS y analizar el cuerpo de la solicitud en JSON
 app.use(cors({origin: "*" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//start application server on port 3000
-app.listen(3000, () => {
-  console.log("The server started on port 3000");
+//se inicia el servidor de aplicaciones en el puerto 3000
+app.listen(3000, () => { //Vamos hacer que la variable escuche en el puerto 3000
+  console.log("Server iniciado en puerto 3000"); //Mensaje por consola para que avise cuando escuche el servidor
 });
 
-// define a sendmail endpoint, which will send emails and response with the corresponding status
+// Se define un punto final de sendmail, que enviará correos electrónicos y responderá con el estado correspondiente
 app.post("/sendmail", (req, res) => {
   console.log("request came");
   let user = req.body;
@@ -33,8 +50,8 @@ app.post("/sendmail", (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: "mailpruebas46@gmail.com",
-      pass: "zdmmitiymhbonzvl"
+      user: "proyectoangular2021@gmail.com",
+      pass: "fbsjnepvvnmyxoch"
     }
   });
   transport.sendMail(mailOptions, (error, info) => {
